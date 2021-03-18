@@ -19,20 +19,20 @@ addBookToLibrary(book2, myLibrary);
 addBookToLibrary(book3, myLibrary);
 addBookToLibrary(book4, myLibrary);
 
-const parentElement = document.querySelector('.book-cards');
+const parentElement = document.querySelector(".book-cards");
 
 for (let i = 0; i < myLibrary.length; i++) {
-  let card = document.createElement('div');
-  card.setAttribute('class', 'card-book');
+  let card = document.createElement("div");
+  card.setAttribute("class", "card-book");
 
-  let title = document.createElement('div');
-  title.textContent = myLibrary[i].title
-  title.setAttribute('class', 'card-book-title');
+  let title = document.createElement("h3");
+  title.textContent = myLibrary[i].title;
+  title.setAttribute("class", "card-book-title");
   card.appendChild(title);
 
-  let author = document.createElement('div');
-  author.textContent = myLibrary[i].author
-  author.setAttribute('class', 'card-book-author');
+  let author = document.createElement("h4");
+  author.textContent = myLibrary[i].author;
+  author.setAttribute("class", "card-book-author");
   card.appendChild(author);
 
   parentElement.appendChild(card);
