@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="/style.css" />
-    <link <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap"
       rel="stylesheet"
@@ -15,6 +15,19 @@
   </head>
   <body>
     <div class="book-cards"></div>
+
+    <button id="add-btn">Add Book</button>
+    <div id="modal-bg" class="modal-bg">
+      <div id="modal" class="modal-content">
+        <span class="close">&times;</span>
+        <form class="add-book-form" action="">
+          <input type="text" class="form-book-title"/>
+          <input type="text" class="form-book-author"/>
+          <input type="checkbox" class="form-book-read"/>
+          <input type="button" value="Save Book" id="form-btn" />
+        </form>
+      </div>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
