@@ -6,7 +6,7 @@
 
 ## :red_circle: Live Demo:
 
-[Live Demo Link](https://pointerish.github.io/Books)
+[Live Demo Link](https://lucid-lovelace-b1e51a.netlify.app/)
 
 ## :hammer: Built with
 
