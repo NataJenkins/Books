@@ -6,7 +6,7 @@
 
 ## :red_circle: Live Demo:
 
-[Live Demo Link]()
+[Live Demo Link](https://pointerish.github.io/Books)
 
 ## :hammer: Built with
 
@@ -32,11 +32,11 @@ To get a local copy up and running follow these simple steps:
 - Twitter: [@NataJenkins](https://twitter.com/NataJenkins)
 - LinkedIn: [Natalia Macias](https://www.linkedin.com/in/natalia-macias96/)
 
-👤 **Kenvin Cotrina**
+👤 **Josias Alvarado**
 
-- Github: []()
-- Twitter: []()
-- LinkedIn: []()
+- Github: [pointerish]()(https://github.com/pointerish)
+- Twitter: [@pointerish]()(https://twitter.com/pointerish)
+- LinkedIn: [Josias Alvarado]()(https://linkedin.com/in/josias-alvarado)
 
 ## 🤝 :raised_hand: :raised_hand: Contributions
 
