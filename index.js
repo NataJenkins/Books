@@ -61,6 +61,16 @@ function appendToParent(book) {
   author.setAttribute("class", "card-book-author");
   card.appendChild(author);
 
+  let readBtn = document.createElement("button");
+  readBtn.textContent = "Read";
+  readBtn.setAttribute("class", "read-status");
+  card.appendChild(readBtn);
+
+  let remove = document.createElement("button");
+  remove.textContent = "Remove";
+  remove.setAttribute("class", "remove-btn");
+  card.appendChild(remove);
+
   parentElement.appendChild(card);
 }
 
@@ -68,7 +78,7 @@ let submitBtn = document.getElementById("form-btn");
 window.onclick = function (event) {
   if (event.target == submitBtn) {
     addNewBook();
-    document.getElementsByClassName('add-book-form')[0].reset();
+    document.getElementsByClassName("add-book-form")[0].reset();
     modal.style.display = "none";
   }
 };
@@ -79,12 +89,32 @@ let book3 = new Book("Azul", "Ruben Dario", false);
 let book4 = new Book("Illuminations", "Arthur Rimbaud", false);
 
 addBookToLibrary(book1, myLibrary);
-addBookToLibrary(book2, myLibrary);
-addBookToLibrary(book3, myLibrary);
-addBookToLibrary(book4, myLibrary);
+// addBookToLibrary(book2, myLibrary);
+// addBookToLibrary(book3, myLibrary);
+// addBookToLibrary(book4, myLibrary);
 
 const parentElement = document.querySelector(".book-cards");
 
 for (let i = 0; i < myLibrary.length; i++) {
   appendToParent(myLibrary[i]);
 }
+
+function readStatus(book) {
+  let isRead = document.querySelector(`.read-status:nth-child(${book.id})`);
+
+  if (book.read === false) {
+    isRead.innerHTML = "Not Read";
+    isRead.onClick={() => {book.read = true}}
+  } else {
+    isRead.innerHTML = "Read";
+    isRead.onClick={() => {book.read = false}}
+  }
+}
+
+
+window.onclick = function (event) {
+  if (event.target == submitBtn) {
+    addNewBook();
+    document.getElementsByClassName("add-book-form")[0].reset();
+    modal.style.display = "none";
+  }
