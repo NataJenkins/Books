@@ -47,9 +47,14 @@ function addNewBook() {
   appendToParent(newBook);
 }
 
+function negateRead(book) {
+  book.read = !book.read;
+}
+
 function appendToParent(book) {
   let card = document.createElement("div");
   card.setAttribute("class", "card-book");
+  card.setAttribute("id", `card-book-${book.id}`);
 
   let title = document.createElement("h3");
   title.textContent = book.title;
@@ -63,15 +68,33 @@ function appendToParent(book) {
 
   let readBtn = document.createElement("button");
   readBtn.textContent = "Read";
-  readBtn.setAttribute("class", "read-status");
+  readBtn.setAttribute("id", `read-status-${book.id}`);
   card.appendChild(readBtn);
 
   let remove = document.createElement("button");
   remove.textContent = "Remove";
-  remove.setAttribute("class", "remove-btn");
+  remove.setAttribute("id", `remove-btn-${book.id}`);
   card.appendChild(remove);
 
   parentElement.appendChild(card);
+
+  let isRead = document.querySelector(`#read-status-${book.id}`);
+
+  isRead.addEventListener("click", function () {
+    if (book.read === true) {
+      isRead.textContent = "Read";
+    } else {
+      isRead.textContent = "Not Read";
+    }
+  });
+  console.log(book);
+
+  let removeBtn = document.querySelector(`#remove-btn-${book.id}`);
+
+  removeBtn.addEventListener("click", function () {
+    let cardBook = document.querySelector(`#card-book-${book.id}`);
+    cardBook.remove();
+  });
 }
 
 let submitBtn = document.getElementById("form-btn");
@@ -98,23 +121,3 @@ const parentElement = document.querySelector(".book-cards");
 for (let i = 0; i < myLibrary.length; i++) {
   appendToParent(myLibrary[i]);
 }
-
-function readStatus(book) {
-  let isRead = document.querySelector(`.read-status:nth-child(${book.id})`);
-
-  if (book.read === false) {
-    isRead.innerHTML = "Not Read";
-    isRead.onClick={() => {book.read = true}}
-  } else {
-    isRead.innerHTML = "Read";
-    isRead.onClick={() => {book.read = false}}
-  }
-}
-
-
-window.onclick = function (event) {
-  if (event.target == submitBtn) {
-    addNewBook();
-    document.getElementsByClassName("add-book-form")[0].reset();
-    modal.style.display = "none";
-  }
