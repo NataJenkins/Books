@@ -17,7 +17,7 @@ span.onclick = function () {
   document.getElementsByClassName('add-book-form')[0].reset();
 };
 
-var myLibrary = {};
+const myLibrary = {};
 
 function Book(title, author, pages, read) {
   this.id = Object.keys(myLibrary).length + 1;
@@ -32,53 +32,52 @@ function addBookToLibrary(book, library) {
 }
 
 function addNewBook() {
-  let title = document.querySelector('.form-book-title').value;
-  let author = document.querySelector('.form-book-author').value;
-  let read = document.querySelector('.form-book-read').value;
-  let pages = document.querySelector('.form-book-pages').value;
+  const title = document.querySelector('.form-book-title').value;
+  const author = document.querySelector('.form-book-author').value;
+  const read = document.querySelector('.form-book-read').value;
+  const pages = document.querySelector('.form-book-pages').value;
 
-  let newBook = new Book(title, author, pages, read);
+  const newBook = new Book(title, author, pages, read);
 
   addBookToLibrary(newBook, myLibrary);
   appendToParent(newBook);
 }
 
-
 function appendToParent(book) {
-  let card = document.createElement('div');
+  const card = document.createElement('div');
   card.setAttribute('class', 'card-book');
   card.setAttribute('id', `card-book-${book.id}`);
 
-  let title = document.createElement('h3');
+  const title = document.createElement('h3');
   title.textContent = book.title;
   title.setAttribute('class', 'card-book-title');
   card.appendChild(title);
 
-  let author = document.createElement('h4');
+  const author = document.createElement('h4');
   author.textContent = book.author;
   author.setAttribute('class', 'card-book-author');
   card.appendChild(author);
 
-  let pages = document.createElement('h6');
+  const pages = document.createElement('h6');
   pages.textContent = `${book.pages} Pages`;
   pages.setAttribute('class', 'card-book-pages');
   card.appendChild(pages);
 
-  let readBtn = document.createElement('button');
+  const readBtn = document.createElement('button');
   readBtn.textContent = document.querySelector('#read-check-box:checked') === null ? 'Not Read' : 'Already Read';
   readBtn.setAttribute('id', `read-status-${book.id}`);
   card.appendChild(readBtn);
 
-  let remove = document.createElement('button');
+  const remove = document.createElement('button');
   remove.textContent = 'Remove';
   remove.setAttribute('id', `remove-btn-${book.id}`);
   card.appendChild(remove);
 
   parentElement.appendChild(card);
 
-  let isRead = document.querySelector(`#read-status-${book.id}`);
+  const isRead = document.querySelector(`#read-status-${book.id}`);
 
-  isRead.addEventListener('click', function () {
+  isRead.addEventListener('click', () => {
     if (book.read === true) {
       isRead.textContent = 'Already Read';
       myLibrary[book.id].read = false;
@@ -88,16 +87,16 @@ function appendToParent(book) {
     }
   });
 
-  let removeBtn = document.querySelector(`#remove-btn-${book.id}`);
+  const removeBtn = document.querySelector(`#remove-btn-${book.id}`);
 
-  removeBtn.addEventListener('click', function () {
-    let cardBook = document.querySelector(`#card-book-${book.id}`);
+  removeBtn.addEventListener('click', () => {
+    const cardBook = document.querySelector(`#card-book-${book.id}`);
     cardBook.remove();
     delete myLibrary[book.id];
   });
 }
 
-let submitBtn = document.getElementById('form-btn');
+const submitBtn = document.getElementById('form-btn');
 window.onclick = function (event) {
   if (event.target == submitBtn) {
     addNewBook();
@@ -106,12 +105,12 @@ window.onclick = function (event) {
   }
 };
 
-let book1 = new Book('Math', 'Math Guy', 123, false);
+const book1 = new Book('Math', 'Math Guy', 123, false);
 
 addBookToLibrary(book1, myLibrary);
 
 const parentElement = document.querySelector('.book-cards');
 
-for (let key in myLibrary) {
+for (const key in myLibrary) {
   appendToParent(myLibrary[key]);
 }
