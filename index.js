@@ -105,11 +105,3 @@ window.onclick = (event) => {
     modal.style.display = 'none';
   }
 };
-
-const book1 = new Book('Math', 'Math Guy', 123, false);
-
-addBookToLibrary(book1, myLibrary);
-
-for (const key of Object.entries(myLibrary)) {
-  appendToParent(myLibrary[key]);
-}
