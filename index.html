@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Books</title>
+  </head>
+  <body>
+    <div class="book-cards"></div>
+
+    <button id="add-btn">Add Book</button>
+    <div id="modal-bg" class="modal-bg">
+      <div id="modal" class="modal-content">
+        <span class="close">&times;</span>
+        <form class="add-book-form" action="">
+          <ul>
+          <li><input type="text" class="form-book-title" placeholder="Book Title" /></li>
+          <li><input
+            type="text"
+            class="form-book-author"
+            placeholder="Book Author"
+          /></li>
+          <li><input
+            type="number"
+            class="form-book-pages"
+            placeholder="Number of Pages"
+          /></li>
+          
+          <li>mark as read<input
+            type="checkbox"
+            class="form-book-read"
+            id="read-check-box"
+          /></li>
+          <input type="button" value="Save Book" id="form-btn" /></li>
+        </ul>
+        </form>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
