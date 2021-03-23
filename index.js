@@ -7,17 +7,18 @@ const btn = document.getElementById('add-btn');
 const span = document.getElementsByClassName('close')[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function () {
+btn.onclick = () => {
   modal.style.display = 'block';
 };
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+span.onclick = () => {
   modal.style.display = 'none';
   document.getElementsByClassName('add-book-form')[0].reset();
 };
 
 const myLibrary = {};
+const parentElement = document.querySelector('.book-cards');
 
 function Book(title, author, pages, read) {
   this.id = Object.keys(myLibrary).length + 1;
@@ -29,18 +30,6 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(book, library) {
   library[book.id] = book;
-}
-
-function addNewBook() {
-  const title = document.querySelector('.form-book-title').value;
-  const author = document.querySelector('.form-book-author').value;
-  const read = document.querySelector('.form-book-read').value;
-  const pages = document.querySelector('.form-book-pages').value;
-
-  const newBook = new Book(title, author, pages, read);
-
-  addBookToLibrary(newBook, myLibrary);
-  appendToParent(newBook);
 }
 
 function appendToParent(book) {
@@ -96,9 +85,21 @@ function appendToParent(book) {
   });
 }
 
+function addNewBook() {
+  const title = document.querySelector('.form-book-title').value;
+  const author = document.querySelector('.form-book-author').value;
+  const read = document.querySelector('.form-book-read').value;
+  const pages = document.querySelector('.form-book-pages').value;
+
+  const newBook = new Book(title, author, pages, read);
+
+  addBookToLibrary(newBook, myLibrary);
+  appendToParent(newBook);
+}
+
 const submitBtn = document.getElementById('form-btn');
-window.onclick = function (event) {
-  if (event.target == submitBtn) {
+window.onclick = (event) => {
+  if (event.target === submitBtn) {
     addNewBook();
     document.getElementsByClassName('add-book-form')[0].reset();
     modal.style.display = 'none';
@@ -109,8 +110,6 @@ const book1 = new Book('Math', 'Math Guy', 123, false);
 
 addBookToLibrary(book1, myLibrary);
 
-const parentElement = document.querySelector('.book-cards');
-
-for (const key in myLibrary) {
+for (const key of Object.entries(myLibrary)) {
   appendToParent(myLibrary[key]);
 }
